@@ -1,4 +1,7 @@
-<h1 align="center">DJS Bot Template</h1>
+<h1 align="center">
+  Discord.js Bot Template<br/>
+  <small>written in TypeScript</small>
+</h1>
 
 <p align="center">
   <a href="https://github.com/twiistrzdev/djs-bot-template">
@@ -42,16 +45,29 @@ npm run dev
 
 ## Features
 
-🐛 SelectMenu Confirmed Bug | has PR [#8174](https://github.com/discordjs/discord.js/pull/8174)
-
 - Example Template Files
-- Deploy Commands and ContextMenus
-- Configs
-- Modules (*Categories*)
+  - Builders
+    - [Button](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/buttons/button.example.ts)
+    - [Context Menu](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/contextmenus/contextmenu.example.ts)
+    - [Modal](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/modals/modal.example.ts)
+    - [Select Menu](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/selectmenus/selectmenu.example.ts) - ⚠️ Confirmed Bug | Has PR [#8174](https://github.com/discordjs/discord.js/pull/8174)
+    - [Slash Command : Command](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/slashcommands/command.example.ts)
+    - [Slash Command : Subcommand](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/slashcommands/subcommand.example.ts)
+  - Commands
+    - [Command](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/commands/command.example.ts)
+    - [Subcommand](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/commands/subcommand.example.ts)
+  - ContextMenus
+    - [Context Menu](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/contextmenus/contextmenu.example.ts)
+  - Interactions
+    - [Button](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/interactions/button.example.ts)
+    - [Modal Submit](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/interactions/modalsubmit.example.ts)
+- [Configs](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/utils/config.ts)
+- [Modules (*Categories*)](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/enums/modules.ts)
 - Commands Handler
 - ContextMenus Handler
 - Interactions Handler
 - Events Handler
+- Deploy Commands and ContextMenus
 
 ## Contributing
 
