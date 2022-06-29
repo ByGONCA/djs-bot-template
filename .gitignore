@@ -1,0 +1,27 @@
+# Packages
+node_modules
+**/node_modules
+
+# Build artifacts
+dist/
+tsconfig.tsbuildinfo
+
+# Log files
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Docker (experimental)
+docker-compose.config.yml
+
+# Miscellaneous
+.tmp/
+dump.sql
+init.sql.bak
+crowdin_credentials.yml
+.env
