@@ -18,19 +18,19 @@ export function exampleCommandEmbed(interaction: ChatInputCommandInteraction<`ca
 
 	embed_.setAuthor({
 		name: `${config.app.name} Command`,
-		iconURL: interaction.client.user?.avatarURL(config.image.options)!,
+		iconURL: interaction.client.user!.avatarURL(config.image.options)!,
 	});
 
 	embed_.addFields(
 		{ name: `String`, value: `${string_}`, inline: true },
 		{ name: `Integer`, value: `${integer_}`, inline: true },
 		{ name: `Number`, value: `${number_}`, inline: true },
-		{ name: `Boolean`, value: `${boolean_}`, inline: true },
-		{ name: `User`, value: `${user_}`, inline: true },
-		{ name: `Member`, value: `${member_}`, inline: true },
-		{ name: `Channel`, value: `${channel_}`, inline: true },
-		{ name: `Role`, value: `${role_}`, inline: true },
-		{ name: `Mentionable`, value: `${mentionable_}`, inline: true },
+		{ name: `Boolean`, value: `${boolean_.toString()}`, inline: true },
+		{ name: `User`, value: `${user_.tag}`, inline: true },
+		{ name: `Member`, value: `${member_.user.tag}`, inline: true },
+		{ name: `Channel`, value: `${channel_.name}`, inline: true },
+		{ name: `Role`, value: `${role_.name}`, inline: true },
+		{ name: `Mentionable`, value: `${mentionable_.toString()}`, inline: true },
 		{ name: `Choice`, value: `${choice_}`, inline: true },
 	);
 

@@ -1,21 +1,21 @@
 import 'reflect-metadata';
+import { URL, fileURLToPath, pathToFileURL } from 'node:url';
 import { Client, GatewayIntentBits, Options, Partials } from 'discord.js';
+import readdirp from 'readdirp';
 import { container } from 'tsyringe';
+import type { CommandInterface } from './interfaces/command.js';
+import type { ContextMenuInterface } from './interfaces/contextmenu.js';
+import type { EventInterface } from './interfaces/event.js';
+import type { InteractionInterface } from './interfaces/interaction.js';
 import { COMMANDS, CONTEXTMENUS, INTERACTIONS } from './tokens.js';
 import config from '../utils/config.js';
-import { URL, fileURLToPath, pathToFileURL } from 'node:url';
-import type { Command } from './interfaces/command.js';
-import type { Interaction } from './interfaces/interaction.js';
-import type { ContextMenu } from './interfaces/contextmenu.js';
-import type { Event } from './interfaces/event.js';
-import readdirp from 'readdirp';
 import logger from '../utils/logger.js';
 
 export class Twiistrz extends Client {
 	public constructor(
-		private readonly commands = new Map<string, Command>(),
-		private readonly contextmenus = new Map<string, ContextMenu>(),
-		private readonly interactions = new Map<string, Interaction>(),
+		private readonly commands = new Map<string, CommandInterface>(),
+		private readonly contextmenus = new Map<string, ContextMenuInterface>(),
+		private readonly interactions = new Map<string, InteractionInterface>(),
 	) {
 		super({
 			// * Just add what intents you need to use.
@@ -72,7 +72,8 @@ export class Twiistrz extends Client {
 		logger.info(`Command Handler: Loading command(s)`);
 
 		for await (const file of files) {
-			const cmd_ = container.resolve<Command>((await import(pathToFileURL(file.fullPath).href)).default);
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+			const cmd_ = container.resolve<CommandInterface>((await import(pathToFileURL(file.fullPath).href)).default);
 
 			logger.debug(`Command Handler: -> ${cmd_.data.name}`);
 			count++;
@@ -90,7 +91,10 @@ export class Twiistrz extends Client {
 		logger.info(`Context Menu Handler: Loading context menu(s)`);
 
 		for await (const file of files) {
-			const ctxmenu_ = container.resolve<ContextMenu>((await import(pathToFileURL(file.fullPath).href)).default);
+			const ctxmenu_ = container.resolve<ContextMenuInterface>(
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+				(await import(pathToFileURL(file.fullPath).href)).default,
+			);
 
 			logger.debug(`Context Menu Handler: -> ${ctxmenu_.data.name}`);
 			count++;
@@ -108,12 +112,15 @@ export class Twiistrz extends Client {
 		logger.info(`Interaction Handler: Loading interaction(s)`);
 
 		for await (const file of files) {
-			const interaction_ = container.resolve<Interaction>((await import(pathToFileURL(file.fullPath).href)).default);
+			const interaction_ = container.resolve<InteractionInterface>(
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+				(await import(pathToFileURL(file.fullPath).href)).default,
+			);
 
 			logger.debug(`Interaction Handler: -> ${interaction_.name}`);
 			count++;
 
-			this.interactions.set(interaction_.customId!, interaction_);
+			this.interactions.set(interaction_.customId, interaction_);
 		}
 
 		logger.info(`Interaction Handler: Loaded ${count} interaction(s)`);
@@ -126,7 +133,8 @@ export class Twiistrz extends Client {
 		logger.info(`Event Handler: Loading event(s)`);
 
 		for await (const file of files) {
-			const event_ = container.resolve<Event>((await import(pathToFileURL(file.fullPath).href)).default);
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+			const event_ = container.resolve<EventInterface>((await import(pathToFileURL(file.fullPath).href)).default);
 
 			if (event_.disabled) {
 				continue;

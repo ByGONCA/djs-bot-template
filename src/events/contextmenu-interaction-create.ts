@@ -1,22 +1,22 @@
-import { Client, ContextMenuCommandInteraction, InteractionType } from 'discord.js';
+import { Client, Interaction, InteractionType } from 'discord.js';
 import { inject, injectable } from 'tsyringe';
-import type { ContextMenu } from '../client/interfaces/contextmenu.js';
-import type { Event } from '../client/interfaces/event.js';
+import type { ContextMenuInterface } from '../client/interfaces/contextmenu.js';
+import type { EventInterface } from '../client/interfaces/event.js';
 import { CONTEXTMENUS } from '../client/tokens.js';
 import logger from '../utils/logger.js';
 
 @injectable()
-export default class ContextMenuInteractionCreateEvent implements Event {
+export default class ContextMenuInteractionCreateEvent implements EventInterface {
 	public name = `Context Menu Interaction Create`;
 	public event = `interactionCreate`;
 
 	public constructor(
 		private readonly client: Client<true>,
-		@inject(CONTEXTMENUS) private readonly contextmenus: Map<string, ContextMenu>,
+		@inject(CONTEXTMENUS) private readonly contextmenus: Map<string, ContextMenuInterface>,
 	) {}
 
-	public async execute() {
-		this.client.on(this.event, async (interaction: ContextMenuCommandInteraction<`cached`>) => {
+	public execute() {
+		this.client.on(this.event, async (interaction: Interaction<`cached`>) => {
 			try {
 				if (interaction.type !== InteractionType.ApplicationCommand || !interaction.isContextMenuCommand()) {
 					return;

@@ -4,12 +4,12 @@ import { exampleButton } from '../builders/buttons/button.example.js';
 import { exampleModal } from '../builders/modals/modal.example.js';
 import { exampleSubcommandSlashCommand } from '../builders/slashcommands/subcommand.example.js';
 import { Modules } from '../client/enums/modules.js';
-import type { Command } from '../client/interfaces/command.js';
+import type { CommandInterface } from '../client/interfaces/command.js';
 import config from '../utils/config.js';
 import logger from '../utils/logger.js';
 
 @injectable()
-export default class ExampleSubcommandCommand implements Command {
+export default class ExampleSubcommandCommand implements CommandInterface {
 	public module = Modules.Miscellaneous;
 	public data = exampleSubcommandSlashCommand();
 	public global = false;

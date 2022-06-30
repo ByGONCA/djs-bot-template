@@ -4,18 +4,18 @@
 
 import { Client, Interaction, InteractionType } from 'discord.js';
 import { injectable } from 'tsyringe';
-import type { Event } from '../client/interfaces/event.js';
+import type { EventInterface } from '../client/interfaces/event.js';
 import logger from '../utils/logger.js';
 
 @injectable()
-export default class InteractionCreateEvent implements Event {
+export default class InteractionCreateEvent implements EventInterface {
 	public name = `Interaction Create`;
 	public event = `interactionCreate`;
 
 	public constructor(private readonly client: Client<true>) {}
 
-	public async execute() {
-		this.client.on(this.event, async (interaction: Interaction<`cached`>) => {
+	public execute() {
+		this.client.on(this.event, (interaction: Interaction<`cached`>) => {
 			try {
 				logger.debug(`Interaction Name: ${interaction.constructor.name}`);
 				logger.debug(`Interaction Type: ${interaction.type}`);
@@ -27,15 +27,17 @@ export default class InteractionCreateEvent implements Event {
 					case InteractionType.MessageComponent:
 						logger.debug(`Component Type: ${interaction.componentType}`);
 						break;
+					default:
+						break;
 				}
 
-				logger.debug(`-> isButton: ${interaction.isButton()}`);
-				logger.debug(`-> isChatInputCommand: ${interaction.isChatInputCommand()}`);
-				logger.debug(`-> isRepliable: ${interaction.isRepliable()}`);
-				logger.debug(`-> isSelectMenu: ${interaction.isSelectMenu()}`);
-				logger.debug(`-> isContextMenuCommand: ${interaction.isContextMenuCommand()}`);
-				logger.debug(`-> isMessageContextMenuCommand: ${interaction.isMessageContextMenuCommand()}`);
-				logger.debug(`-> isUserContextMenuCommand: ${interaction.isUserContextMenuCommand()}`);
+				logger.debug(`-> isButton: ${interaction.isButton().toString()}`);
+				logger.debug(`-> isChatInputCommand: ${interaction.isChatInputCommand().toString()}`);
+				logger.debug(`-> isRepliable: ${interaction.isRepliable().toString()}`);
+				logger.debug(`-> isSelectMenu: ${interaction.isSelectMenu().toString()}`);
+				logger.debug(`-> isContextMenuCommand: ${interaction.isContextMenuCommand().toString()}`);
+				logger.debug(`-> isMessageContextMenuCommand: ${interaction.isMessageContextMenuCommand().toString()}`);
+				logger.debug(`-> isUserContextMenuCommand: ${interaction.isUserContextMenuCommand().toString()}`);
 				// logger.debug(interaction);
 			} catch (e) {
 				const error = e as Error;

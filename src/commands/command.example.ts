@@ -3,12 +3,12 @@ import { injectable } from 'tsyringe';
 import { exampleCommandEmbed } from '../builders/embeds/command-embed.example.js';
 import { exampleSlashCommand } from '../builders/slashcommands/command.example.js';
 import { Modules } from '../client/enums/modules.js';
-import type { Command } from '../client/interfaces/command.js';
+import type { CommandInterface } from '../client/interfaces/command.js';
 import config from '../utils/config.js';
 import logger from '../utils/logger.js';
 
 @injectable()
-export default class ExampleCommandCommand implements Command {
+export default class ExampleCommandCommand implements CommandInterface {
 	public module = Modules.Miscellaneous;
 	public data = exampleSlashCommand();
 	public global = false;

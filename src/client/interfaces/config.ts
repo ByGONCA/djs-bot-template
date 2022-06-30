@@ -1,7 +1,7 @@
 import type { ImageURLOptions } from '@discordjs/rest';
 import type { ColorResolvable } from 'discord.js';
 
-export interface Config {
+export interface ConfigInterface {
 	token: string;
 	env: string;
 

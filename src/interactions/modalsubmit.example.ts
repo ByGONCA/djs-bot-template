@@ -1,8 +1,8 @@
 import type { ModalSubmitInteraction } from 'discord.js';
-import type { Interaction } from '../client/interfaces/interaction.js';
+import type { InteractionInterface } from '../client/interfaces/interaction.js';
 import logger from '../utils/logger.js';
 
-export default class ExampleModalSubmitInteraction implements Interaction {
+export default class ExampleModalSubmitInteraction implements InteractionInterface {
 	public name = `Example Modal Submit`;
 	public customId = `modalId`;
 

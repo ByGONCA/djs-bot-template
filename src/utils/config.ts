@@ -1,6 +1,6 @@
-import type { Config } from '../client/interfaces/config.js';
+import type { ConfigInterface } from '../client/interfaces/config.js';
 
-const config: Config = {
+const config: ConfigInterface = {
 	token: process.env.CLIENT_TOKEN!,
 	env: process.env.NODE_ENV!,
 

@@ -1,7 +1,7 @@
 import type { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
 import type { Module } from '../typings/module.js';
 
-export interface Command {
+export interface CommandInterface {
 	module: Module;
 	data: SlashCommandBuilder;
 	global?: boolean;

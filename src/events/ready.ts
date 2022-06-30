@@ -1,16 +1,16 @@
 import { ActivityType, Client } from 'discord.js';
 import { injectable } from 'tsyringe';
-import type { Event } from '../client/interfaces/event.js';
+import type { EventInterface } from '../client/interfaces/event.js';
 import logger from '../utils/logger.js';
 
 @injectable()
-export default class ReadyEvent implements Event {
+export default class ReadyEvent implements EventInterface {
 	public name = `Ready`;
 	public event = `ready`;
 
 	public constructor(private readonly client: Client<true>) {}
 
-	public async execute() {
+	public execute() {
 		this.client.once(this.event, () => {
 			this.client.user.setPresence({
 				status: `online`,

@@ -1,12 +1,12 @@
 import 'reflect-metadata';
-import { RESTPostAPIApplicationCommandsJSONBody, Routes } from 'discord-api-types/v10';
-import config from '../utils/config.js';
-import readdirp from 'readdirp';
 import { URL, fileURLToPath, pathToFileURL } from 'node:url';
-import type { Command } from './interfaces/command.js';
-import { container } from 'tsyringe';
 import { REST } from '@discordjs/rest';
-import type { ContextMenu } from './interfaces/contextmenu.js';
+import { RESTPostAPIApplicationCommandsJSONBody, Routes } from 'discord-api-types/v10';
+import readdirp from 'readdirp';
+import { container } from 'tsyringe';
+import type { CommandInterface } from './interfaces/command.js';
+import type { ContextMenuInterface } from './interfaces/contextmenu.js';
+import config from '../utils/config.js';
 import logger from '../utils/logger.js';
 
 export class Deploy {
@@ -30,7 +30,8 @@ export class Deploy {
 		logger.info(`Command Handler: Deploying command(s)`);
 
 		for await (const file of files) {
-			const cmd_ = container.resolve<Command>((await import(pathToFileURL(file.fullPath).href)).default);
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+			const cmd_ = container.resolve<CommandInterface>((await import(pathToFileURL(file.fullPath).href)).default);
 
 			if (cmd_.global) {
 				logger.debug(`Command Handler: -> ${cmd_.data.name} (Global)`);
@@ -53,7 +54,10 @@ export class Deploy {
 		logger.info(`Context Menu Handler: Deploying context menu(s)`);
 
 		for await (const file of files) {
-			const ctxmenu_ = container.resolve<ContextMenu>((await import(pathToFileURL(file.fullPath).href)).default);
+			const ctxmenu_ = container.resolve<ContextMenuInterface>(
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+				(await import(pathToFileURL(file.fullPath).href)).default,
+			);
 
 			if (ctxmenu_.global) {
 				logger.debug(`Context Menu Handler: -> ${ctxmenu_.data.name} (Global)`);
