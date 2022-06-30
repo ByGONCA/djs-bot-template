@@ -1,0 +1,5 @@
+addReviewers: true
+reviewers:
+  - twiistrzdev
+numberOfReviewers: 0
+runOnDraft: true

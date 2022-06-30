@@ -1,7 +1,4 @@
-<h1 align="center">
-  Discord.js Bot Template<br/>
-  <small>written in TypeScript</small>
-</h1>
+<h1 align="center">Discord.js Bot Template</h1>
 
 <p align="center">
   <a href="https://github.com/twiistrzdev/djs-bot-template">
