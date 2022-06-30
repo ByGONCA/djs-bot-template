@@ -62,7 +62,7 @@ npm run dev
     - [Button](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/interactions/button.example.ts)
     - [Modal Submit](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/interactions/modalsubmit.example.ts)
 - [Configs](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/utils/config.ts)
-- [Modules (*Categories*)](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/enums/modules.ts)
+- [Modules (*Categories*)](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/client/enums/modules.ts)
 - Commands Handler
 - ContextMenus Handler
 - Interactions Handler
