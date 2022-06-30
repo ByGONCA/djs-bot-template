@@ -4,7 +4,7 @@ import { exampleCommandEmbed } from '../builders/embeds/command-embed.example.js
 import { exampleSlashCommand } from '../builders/slashcommands/command.example.js';
 import { Modules } from '../client/enums/modules.js';
 import type { Command } from '../client/interfaces/command.js';
-import { config } from '../utils/config.js';
+import config from '../utils/config.js';
 
 @injectable()
 export default class ExampleCommandCommand implements Command {
@@ -15,7 +15,7 @@ export default class ExampleCommandCommand implements Command {
 	public async execute(interaction: ChatInputCommandInteraction<`cached`>) {
 		try {
 			return await interaction.reply({
-				content: `${config().app.name} Command`,
+				content: `${config.app.name} Command`,
 				embeds: [exampleCommandEmbed(interaction)],
 			});
 		} catch (e) {

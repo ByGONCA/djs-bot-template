@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, EmbedBuilder } from 'discord.js';
-import { config } from '../../utils/config.js';
+import config from '../../utils/config.js';
 
 export function exampleCommandEmbed(interaction: ChatInputCommandInteraction<`cached`>): EmbedBuilder {
 	const embed_ = new EmbedBuilder();
@@ -14,11 +14,11 @@ export function exampleCommandEmbed(interaction: ChatInputCommandInteraction<`ca
 	const mentionable_ = interaction.options.getMentionable(`mentionable`)!;
 	const choice_ = interaction.options.getNumber(`choice`)!;
 
-	embed_.setColor(config().color.primary);
+	embed_.setColor(config.color.primary);
 
 	embed_.setAuthor({
-		name: `${config().app.name} Command`,
-		iconURL: interaction.client.user?.avatarURL(config().image.options)!,
+		name: `${config.app.name} Command`,
+		iconURL: interaction.client.user?.avatarURL(config.image.options)!,
 	});
 
 	embed_.addFields(

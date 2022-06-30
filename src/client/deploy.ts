@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { RESTPostAPIApplicationCommandsJSONBody, Routes } from 'discord-api-types/v10';
-import { config } from '../utils/config.js';
+import config from '../utils/config.js';
 import readdirp from 'readdirp';
 import { URL, fileURLToPath, pathToFileURL } from 'node:url';
 import type { Command } from './interfaces/command.js';
@@ -12,14 +12,14 @@ export class Deploy {
 	public constructor(
 		private readonly applicationGuildCommands: Array<RESTPostAPIApplicationCommandsJSONBody> = [],
 		private readonly applicationGlobalCommands: Array<RESTPostAPIApplicationCommandsJSONBody> = [],
-		private readonly rest = new REST({ version: `10` }).setToken(config().token),
+		private readonly rest = new REST({ version: `10` }).setToken(config.token),
 	) {
 		console.clear();
 	}
 
 	public async deleteApplicationCommands() {
-		await this.rest.put(Routes.applicationCommands(config().app.clientId), { body: [] });
-		await this.rest.put(Routes.applicationGuildCommands(config().app.clientId, config().app.guildId), { body: [] });
+		await this.rest.put(Routes.applicationCommands(config.app.clientId), { body: [] });
+		await this.rest.put(Routes.applicationGuildCommands(config.app.clientId, config.app.guildId), { body: [] });
 	}
 
 	public async applicationCommandsHandler() {
@@ -77,13 +77,13 @@ export class Deploy {
 			await this.applicationContextMenusHandler();
 
 			if (this.applicationGlobalCommands.length > 0) {
-				await this.rest.put(Routes.applicationCommands(config().app.clientId), {
+				await this.rest.put(Routes.applicationCommands(config.app.clientId), {
 					body: this.applicationGlobalCommands,
 				});
 			}
 
 			if (this.applicationGuildCommands.length > 0) {
-				await this.rest.put(Routes.applicationGuildCommands(config().app.clientId, config().app.guildId), {
+				await this.rest.put(Routes.applicationGuildCommands(config.app.clientId, config.app.guildId), {
 					body: this.applicationGuildCommands,
 				});
 			}

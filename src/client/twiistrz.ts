@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { Client, GatewayIntentBits, Options, Partials } from 'discord.js';
 import { container } from 'tsyringe';
 import { COMMANDS, CONTEXTMENUS, INTERACTIONS } from './tokens.js';
-import { config } from '../utils/config.js';
+import config from '../utils/config.js';
 import { URL, fileURLToPath, pathToFileURL } from 'node:url';
 import type { Command } from './interfaces/command.js';
 import type { Interaction } from './interfaces/interaction.js';
@@ -147,7 +147,7 @@ export class Twiistrz extends Client {
 			await this.interactionsHandler();
 			await this.eventsHandler();
 
-			await super.login(config().token);
+			await super.login(config.token);
 		} catch (e) {
 			const error = e as Error;
 			console.error(error, error.message);

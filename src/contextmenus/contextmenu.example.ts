@@ -2,7 +2,7 @@ import type { ContextMenuCommandInteraction } from 'discord.js';
 import { injectable } from 'tsyringe';
 import { exampleContextMenu } from '../builders/contextmenus/contextmenu.example.js';
 import type { ContextMenu } from '../client/interfaces/contextmenu.js';
-import { config } from '../utils/config.js';
+import config from '../utils/config.js';
 
 @injectable()
 export default class ExampleContextMenuContextMenu implements ContextMenu {
@@ -11,7 +11,7 @@ export default class ExampleContextMenuContextMenu implements ContextMenu {
 
 	public async execute(interaction: ContextMenuCommandInteraction<`cached`>) {
 		try {
-			return await interaction.reply({ content: `${config().app.name} Context Menu` });
+			return await interaction.reply({ content: `${config.app.name} Context Menu` });
 		} catch (e) {
 			const error = e as Error;
 			return console.error(error, error.message);
