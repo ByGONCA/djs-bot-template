@@ -1,3 +1,3 @@
-export const commandsToken = Symbol(`commands`);
-export const contextmenusToken = Symbol(`contextmenus`);
-export const interactionsToken = Symbol(`interactions`);
+export const COMMANDS = Symbol(`commands`);
+export const CONTEXTMENUS = Symbol(`contextmenus`);
+export const INTERACTIONS = Symbol(`interactions`);

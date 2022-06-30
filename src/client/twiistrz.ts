@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { Client, GatewayIntentBits, Options, Partials } from 'discord.js';
 import { container } from 'tsyringe';
-import { commandsToken, contextmenusToken, interactionsToken } from './tokens.js';
+import { COMMANDS, CONTEXTMENUS, INTERACTIONS } from './tokens.js';
 import { config } from '../utils/config.js';
 import { URL, fileURLToPath, pathToFileURL } from 'node:url';
 import type { Command } from './interfaces/command.js';
@@ -12,9 +12,9 @@ import readdirp from 'readdirp';
 
 export class Twiistrz extends Client {
 	public constructor(
-		public commands = new Map<string, Command>(),
-		public contextmenus = new Map<string, ContextMenu>(),
-		public interactions = new Map<string, Interaction>(),
+		private readonly commands = new Map<string, Command>(),
+		private readonly contextmenus = new Map<string, ContextMenu>(),
+		private readonly interactions = new Map<string, Interaction>(),
 	) {
 		super({
 			// * Just add what intents you need to use.
@@ -57,9 +57,9 @@ export class Twiistrz extends Client {
 		super.setMaxListeners(20);
 
 		container.register(Client, { useValue: this });
-		container.register(commandsToken, { useValue: this.commands });
-		container.register(contextmenusToken, { useValue: this.contextmenus });
-		container.register(interactionsToken, { useValue: this.interactions });
+		container.register(COMMANDS, { useValue: this.commands });
+		container.register(CONTEXTMENUS, { useValue: this.contextmenus });
+		container.register(INTERACTIONS, { useValue: this.interactions });
 
 		console.clear();
 	}

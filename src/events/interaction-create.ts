@@ -8,9 +8,10 @@ import type { Event } from '../client/interfaces/event.js';
 
 @injectable()
 export default class InteractionCreateEvent implements Event {
-	public constructor(private readonly client: Client<true>) {}
 	public name = `Interaction Create`;
 	public event = `interactionCreate`;
+
+	public constructor(private readonly client: Client<true>) {}
 
 	public async execute() {
 		this.client.on(this.event, async (interaction: Interaction<`cached`>) => {

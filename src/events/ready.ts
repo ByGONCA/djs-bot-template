@@ -4,9 +4,10 @@ import type { Event } from '../client/interfaces/event.js';
 
 @injectable()
 export default class ReadyEvent implements Event {
-	public constructor(private readonly client: Client<true>) {}
 	public name = `Ready`;
 	public event = `ready`;
+
+	public constructor(private readonly client: Client<true>) {}
 
 	public async execute() {
 		this.client.once(this.event, () => {

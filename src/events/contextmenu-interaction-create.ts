@@ -2,16 +2,17 @@ import { Client, ContextMenuCommandInteraction, InteractionType } from 'discord.
 import { inject, injectable } from 'tsyringe';
 import type { ContextMenu } from '../client/interfaces/contextmenu.js';
 import type { Event } from '../client/interfaces/event.js';
-import { contextmenusToken } from '../client/tokens.js';
+import { CONTEXTMENUS } from '../client/tokens.js';
 
 @injectable()
 export default class ContextMenuInteractionCreateEvent implements Event {
-	public constructor(
-		private readonly client: Client<true>,
-		@inject(contextmenusToken) private readonly contextmenus: Map<string, ContextMenu>,
-	) {}
 	public name = `Context Menu Interaction Create`;
 	public event = `interactionCreate`;
+
+	public constructor(
+		private readonly client: Client<true>,
+		@inject(CONTEXTMENUS) private readonly contextmenus: Map<string, ContextMenu>,
+	) {}
 
 	public async execute() {
 		this.client.on(this.event, async (interaction: ContextMenuCommandInteraction<`cached`>) => {
