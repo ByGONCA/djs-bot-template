@@ -1,5 +1,5 @@
 import type { ButtonInteraction } from 'discord.js';
-import type { Interaction } from '../interfaces/interaction.js';
+import type { Interaction } from '../client/interfaces/interaction.js';
 
 export default class ExampleButtonInteraction implements Interaction {
 	public name = `Example Button`;

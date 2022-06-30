@@ -4,7 +4,7 @@
 
 import { Client, Interaction, InteractionType } from 'discord.js';
 import { injectable } from 'tsyringe';
-import type { Event } from '../interfaces/event.js';
+import type { Event } from '../client/interfaces/event.js';
 
 @injectable()
 export default class InteractionCreateEvent implements Event {

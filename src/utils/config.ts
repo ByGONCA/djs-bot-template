@@ -1,4 +1,4 @@
-import type { Config } from '../interfaces/config.js';
+import type { Config } from '../client/interfaces/config.js';
 
 export function config(): Config {
 	return {

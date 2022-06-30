@@ -1,8 +1,8 @@
 import { ChatInputCommandInteraction, EmbedBuilder } from 'discord.js';
 import { injectable } from 'tsyringe';
 import { exampleSlashCommand } from '../builders/slashcommands/command.example.js';
-import { Modules } from '../enums/modules.js';
-import type { Command } from '../interfaces/command.js';
+import { Modules } from '../client/enums/modules.js';
+import type { Command } from '../client/interfaces/command.js';
 import { config } from '../utils/config.js';
 
 @injectable()

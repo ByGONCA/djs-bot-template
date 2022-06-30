@@ -1,7 +1,7 @@
 import { Client, ContextMenuCommandInteraction, InteractionType } from 'discord.js';
 import { inject, injectable } from 'tsyringe';
-import type { ContextMenu } from '../interfaces/contextmenu.js';
-import type { Event } from '../interfaces/event.js';
+import type { ContextMenu } from '../client/interfaces/contextmenu.js';
+import type { Event } from '../client/interfaces/event.js';
 import { contextmenusToken } from '../client/tokens.js';
 
 @injectable()

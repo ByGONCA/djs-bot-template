@@ -4,10 +4,10 @@ import { container } from 'tsyringe';
 import { commandsToken, contextmenusToken, interactionsToken } from './tokens.js';
 import { config } from '../utils/config.js';
 import { URL, fileURLToPath, pathToFileURL } from 'node:url';
-import type { Command } from '../interfaces/command.js';
-import type { Interaction } from '../interfaces/interaction.js';
-import type { ContextMenu } from '../interfaces/contextmenu.js';
-import type { Event } from '../interfaces/event.js';
+import type { Command } from './interfaces/command.js';
+import type { Interaction } from './interfaces/interaction.js';
+import type { ContextMenu } from './interfaces/contextmenu.js';
+import type { Event } from './interfaces/event.js';
 import readdirp from 'readdirp';
 
 export class Twiistrz extends Client {

@@ -1,7 +1,7 @@
 import type { ContextMenuCommandInteraction } from 'discord.js';
 import { injectable } from 'tsyringe';
 import { exampleContextMenu } from '../builders/contextmenus/contextmenu.example.js';
-import type { ContextMenu } from '../interfaces/contextmenu.js';
+import type { ContextMenu } from '../client/interfaces/contextmenu.js';
 import { config } from '../utils/config.js';
 
 @injectable()

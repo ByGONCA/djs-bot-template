@@ -3,10 +3,10 @@ import { RESTPostAPIApplicationCommandsJSONBody, Routes } from 'discord-api-type
 import { config } from '../utils/config.js';
 import readdirp from 'readdirp';
 import { URL, fileURLToPath, pathToFileURL } from 'node:url';
-import type { Command } from '../interfaces/command.js';
+import type { Command } from './interfaces/command.js';
 import { container } from 'tsyringe';
 import { REST } from '@discordjs/rest';
-import type { ContextMenu } from '../interfaces/contextmenu.js';
+import type { ContextMenu } from './interfaces/contextmenu.js';
 
 export class Deploy {
 	public constructor(

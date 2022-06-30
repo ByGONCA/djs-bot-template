@@ -1,7 +1,7 @@
 import { ChatInputCommandInteraction, Client, InteractionType } from 'discord.js';
 import { inject, injectable } from 'tsyringe';
-import type { Command } from '../interfaces/command.js';
-import type { Event } from '../interfaces/event.js';
+import type { Command } from '../client/interfaces/command.js';
+import type { Event } from '../client/interfaces/event.js';
 import { commandsToken } from '../client/tokens.js';
 
 @injectable()

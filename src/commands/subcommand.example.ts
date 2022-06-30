@@ -3,8 +3,8 @@ import { injectable } from 'tsyringe';
 import { exampleButton } from '../builders/buttons/button.example.js';
 import { exampleModal } from '../builders/modals/modal.example.js';
 import { exampleSubcommandSlashCommand } from '../builders/slashcommands/subcommand.example.js';
-import { Modules } from '../enums/modules.js';
-import type { Command } from '../interfaces/command.js';
+import { Modules } from '../client/enums/modules.js';
+import type { Command } from '../client/interfaces/command.js';
 import { config } from '../utils/config.js';
 
 @injectable()

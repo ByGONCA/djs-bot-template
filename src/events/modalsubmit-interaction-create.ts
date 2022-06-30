@@ -1,7 +1,7 @@
 import { Client, InteractionType, ModalSubmitInteraction } from 'discord.js';
 import { inject, injectable } from 'tsyringe';
-import type { Event } from '../interfaces/event.js';
-import type { Interaction } from '../interfaces/interaction.js';
+import type { Event } from '../client/interfaces/event.js';
+import type { Interaction } from '../client/interfaces/interaction.js';
 import { interactionsToken } from '../client/tokens.js';
 
 @injectable()

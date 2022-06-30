@@ -1,6 +1,6 @@
 import { ActivityType, Client } from 'discord.js';
 import { injectable } from 'tsyringe';
-import type { Event } from '../interfaces/event.js';
+import type { Event } from '../client/interfaces/event.js';
 
 @injectable()
 export default class ReadyEvent implements Event {
