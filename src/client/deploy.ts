@@ -7,6 +7,7 @@ import type { Command } from './interfaces/command.js';
 import { container } from 'tsyringe';
 import { REST } from '@discordjs/rest';
 import type { ContextMenu } from './interfaces/contextmenu.js';
+import logger from '../utils/logger.js';
 
 export class Deploy {
 	public constructor(
@@ -26,51 +27,51 @@ export class Deploy {
 		let count = 0;
 		const files = readdirp(fileURLToPath(new URL(`../commands`, import.meta.url)), { fileFilter: `*.js` });
 
-		console.info(`Command Handler: Deploying command(s)`);
+		logger.info(`Command Handler: Deploying command(s)`);
 
 		for await (const file of files) {
 			const cmd_ = container.resolve<Command>((await import(pathToFileURL(file.fullPath).href)).default);
 
 			if (cmd_.global) {
-				console.info(`Command Handler: -> ${cmd_.data.name} (Global)`);
+				logger.debug(`Command Handler: -> ${cmd_.data.name} (Global)`);
 				this.applicationGlobalCommands.push(cmd_.data.toJSON());
 			} else {
-				console.info(`Command Handler: -> ${cmd_.data.name} (Guild)`);
+				logger.debug(`Command Handler: -> ${cmd_.data.name} (Guild)`);
 				this.applicationGuildCommands.push(cmd_.data.toJSON());
 			}
 
 			count++;
 		}
 
-		console.info(`Command Handler: Deployed ${count} command(s)`);
+		logger.info(`Command Handler: Deployed ${count} command(s)`);
 	}
 
 	public async applicationContextMenusHandler() {
 		let count = 0;
 		const files = readdirp(fileURLToPath(new URL(`../contextmenus`, import.meta.url)), { fileFilter: `*.js` });
 
-		console.info(`Context Menu Handler: Deploying context menu(s)`);
+		logger.info(`Context Menu Handler: Deploying context menu(s)`);
 
 		for await (const file of files) {
 			const ctxmenu_ = container.resolve<ContextMenu>((await import(pathToFileURL(file.fullPath).href)).default);
 
 			if (ctxmenu_.global) {
-				console.info(`Context Menu Handler: -> ${ctxmenu_.data.name} (Global)`);
+				logger.debug(`Context Menu Handler: -> ${ctxmenu_.data.name} (Global)`);
 				this.applicationGlobalCommands.push(ctxmenu_.data.toJSON());
 			} else {
-				console.info(`Context Menu Handler: -> ${ctxmenu_.data.name} (Guild)`);
+				logger.debug(`Context Menu Handler: -> ${ctxmenu_.data.name} (Guild)`);
 				this.applicationGuildCommands.push(ctxmenu_.data.toJSON());
 			}
 
 			count++;
 		}
 
-		console.info(`Context Menu Handler: Deployed ${count} context menu(s)`);
+		logger.info(`Context Menu Handler: Deployed ${count} context menu(s)`);
 	}
 
 	public async run() {
 		try {
-			console.info(`Started deploying command(s) and context menu(s).`);
+			logger.info(`Started deploying command(s) and context menu(s).`);
 
 			await this.deleteApplicationCommands();
 			await this.applicationCommandsHandler();
@@ -88,10 +89,10 @@ export class Deploy {
 				});
 			}
 
-			console.info(`Successfully deployed command(s) and context menu(s).`);
+			logger.info(`Successfully deployed command(s) and context menu(s).`);
 		} catch (e) {
 			const error = e as Error;
-			console.error(error, error.message);
+			logger.error(error, error.message);
 		}
 	}
 }

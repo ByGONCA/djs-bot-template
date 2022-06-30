@@ -3,6 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import type { Event } from '../client/interfaces/event.js';
 import type { Interaction } from '../client/interfaces/interaction.js';
 import { INTERACTIONS } from '../client/tokens.js';
+import logger from '../utils/logger.js';
 
 @injectable()
 export default class ButtonInteractionCreateEvent implements Event {
@@ -30,7 +31,7 @@ export default class ButtonInteractionCreateEvent implements Event {
 				await btn_.execute(interaction);
 			} catch (e) {
 				const error = e as Error;
-				console.error(error, error.message);
+				logger.error(error, error.message);
 			}
 		});
 	}

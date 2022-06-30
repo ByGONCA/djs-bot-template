@@ -5,6 +5,7 @@ import { exampleSlashCommand } from '../builders/slashcommands/command.example.j
 import { Modules } from '../client/enums/modules.js';
 import type { Command } from '../client/interfaces/command.js';
 import config from '../utils/config.js';
+import logger from '../utils/logger.js';
 
 @injectable()
 export default class ExampleCommandCommand implements Command {
@@ -20,7 +21,7 @@ export default class ExampleCommandCommand implements Command {
 			});
 		} catch (e) {
 			const error = e as Error;
-			return console.error(error, error.message);
+			return logger.error(error, error.message);
 		}
 	}
 }

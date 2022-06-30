@@ -3,6 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import type { Command } from '../client/interfaces/command.js';
 import type { Event } from '../client/interfaces/event.js';
 import { COMMANDS } from '../client/tokens.js';
+import logger from '../utils/logger.js';
 
 @injectable()
 export default class CommandInteractionCreateEvent implements Event {
@@ -30,7 +31,7 @@ export default class CommandInteractionCreateEvent implements Event {
 				await cmd_.execute(interaction);
 			} catch (e) {
 				const error = e as Error;
-				console.error(error, error.message);
+				logger.error(error, error.message);
 			}
 		});
 	}

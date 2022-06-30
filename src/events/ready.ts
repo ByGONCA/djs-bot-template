@@ -1,6 +1,7 @@
 import { ActivityType, Client } from 'discord.js';
 import { injectable } from 'tsyringe';
 import type { Event } from '../client/interfaces/event.js';
+import logger from '../utils/logger.js';
 
 @injectable()
 export default class ReadyEvent implements Event {
@@ -21,7 +22,7 @@ export default class ReadyEvent implements Event {
 				],
 			});
 
-			console.info(`${this.client.user.tag}: Client Ready!`);
+			logger.info(`${this.client.user.tag}: Client Ready!`);
 		});
 	}
 }

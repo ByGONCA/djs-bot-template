@@ -3,6 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import type { ContextMenu } from '../client/interfaces/contextmenu.js';
 import type { Event } from '../client/interfaces/event.js';
 import { CONTEXTMENUS } from '../client/tokens.js';
+import logger from '../utils/logger.js';
 
 @injectable()
 export default class ContextMenuInteractionCreateEvent implements Event {
@@ -30,7 +31,7 @@ export default class ContextMenuInteractionCreateEvent implements Event {
 				await ctxmenu_.execute(interaction);
 			} catch (e) {
 				const error = e as Error;
-				console.error(error, error.message);
+				logger.error(error, error.message);
 			}
 		});
 	}

@@ -3,6 +3,7 @@ import type { ColorResolvable } from 'discord.js';
 
 export interface Config {
 	token: string;
+	env: string;
 
 	app: {
 		name: string;

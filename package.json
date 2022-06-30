@@ -22,6 +22,8 @@
 		"@discordjs/rest": "^0.6.0-dev.1656158624-c4653f9",
 		"discord.js": "^14.0.0-dev.1656158629-c4653f9",
 		"dotenv": "^16.0.1",
+		"pino": "^8.1.0",
+		"pino-pretty": "^8.1.0",
 		"readdirp": "^3.6.0",
 		"reflect-metadata": "^0.1.13",
 		"tsyringe": "^4.7.0"

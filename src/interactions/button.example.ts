@@ -1,5 +1,6 @@
 import type { ButtonInteraction } from 'discord.js';
 import type { Interaction } from '../client/interfaces/interaction.js';
+import logger from '../utils/logger.js';
 
 export default class ExampleButtonInteraction implements Interaction {
 	public name = `Example Button`;
@@ -10,7 +11,7 @@ export default class ExampleButtonInteraction implements Interaction {
 			await interaction.reply({ content: `Button Clicked ${interaction.customId}` });
 		} catch (e) {
 			const error = e as Error;
-			console.error(error, error.message);
+			logger.error(error, error.message);
 		}
 	}
 }

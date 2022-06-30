@@ -1,5 +1,6 @@
 import type { ModalSubmitInteraction } from 'discord.js';
 import type { Interaction } from '../client/interfaces/interaction.js';
+import logger from '../utils/logger.js';
 
 export default class ExampleModalSubmitInteraction implements Interaction {
 	public name = `Example Modal Submit`;
@@ -15,7 +16,7 @@ export default class ExampleModalSubmitInteraction implements Interaction {
 			});
 		} catch (e) {
 			const error = e as Error;
-			console.error(error, error.message);
+			logger.error(error, error.message);
 		}
 	}
 }
