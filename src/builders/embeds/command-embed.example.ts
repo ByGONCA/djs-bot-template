@@ -8,16 +8,18 @@ import config from '../../utils/config.js';
  * @returns {EmbedBuilder}
  */
 export function exampleCommandEmbed(interaction: ChatInputCommandInteraction<`cached`>): EmbedBuilder {
-	const string_ = interaction.options.getString(`string`)!;
-	const integer_ = interaction.options.getInteger(`integer`)!;
-	const number_ = interaction.options.getNumber(`number`)!;
-	const boolean_ = interaction.options.getBoolean(`boolean`)!;
-	const user_ = interaction.options.getUser(`user`)!;
-	const member_ = interaction.options.getMember(`user`)!;
-	const channel_ = interaction.options.getChannel(`channel`)!;
-	const role_ = interaction.options.getRole(`role`)!;
-	const mentionable_ = interaction.options.getMentionable(`mentionable`)!;
-	const choice_ = interaction.options.getNumber(`choice`)!;
+	const options_ = interaction.options;
+
+	const string_: string = options_.getString(`string`)!;
+	const integer_: string = options_.getInteger(`integer`)?.toString() ?? `n/a`;
+	const number_: string = options_.getNumber(`number`)?.toString() ?? `n/a`;
+	const boolean_: string = options_.getBoolean(`boolean`)?.toString() ?? `n/a`;
+	const user_: string = options_.getUser(`user`)?.toString() ?? `n/a`;
+	const member_: string = options_.getMember(`user`)?.toString() ?? `n/a`;
+	const channel_: string = options_.getChannel(`channel`)?.toString() ?? `n/a`;
+	const role_: string = options_.getRole(`role`)?.toString() ?? `n/a`;
+	const mentionable_: string = options_.getMentionable(`mentionable`)?.toString() ?? `n/a`;
+	const choice_: string = options_.getString(`choice`) ?? `n/a`;
 
 	return new EmbedBuilder()
 		.setColor(config.color.primary)
@@ -29,12 +31,12 @@ export function exampleCommandEmbed(interaction: ChatInputCommandInteraction<`ca
 			{ name: `String`, value: `${string_}`, inline: true },
 			{ name: `Integer`, value: `${integer_}`, inline: true },
 			{ name: `Number`, value: `${number_}`, inline: true },
-			{ name: `Boolean`, value: `${boolean_.toString()}`, inline: true },
-			{ name: `User`, value: `${user_.tag}`, inline: true },
-			{ name: `Member`, value: `${member_.user.tag}`, inline: true },
-			{ name: `Channel`, value: `${channel_.name}`, inline: true },
-			{ name: `Role`, value: `${role_.name}`, inline: true },
-			{ name: `Mentionable`, value: `${mentionable_.toString()}`, inline: true },
+			{ name: `Boolean`, value: `${boolean_}`, inline: true },
+			{ name: `User`, value: `${user_}`, inline: true },
+			{ name: `Member`, value: `${member_}`, inline: true },
+			{ name: `Channel`, value: `${channel_}`, inline: true },
+			{ name: `Role`, value: `${role_}`, inline: true },
+			{ name: `Mentionable`, value: `${mentionable_}`, inline: true },
 			{ name: `Choice`, value: `${choice_}`, inline: true },
 		);
 }
