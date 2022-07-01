@@ -44,10 +44,11 @@ npm run dev
 
 - Example Template Files
   - Builders
-    - [Button](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/buttons/button.example.ts)
+    - [Button](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/buttons/subcommand-button.example.ts)
     - [Context Menu](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/contextmenus/contextmenu.example.ts)
-    - [Modal](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/modals/modal.example.ts)
-    - [Select Menu](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/selectmenus/selectmenu.example.ts) - ⚠️ Confirmed Bug | Has PR [#8174](https://github.com/discordjs/discord.js/pull/8174)
+    - [Embed](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/embeds/command-embed.example.ts)
+    - [Modal](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/modals/subcommand-modal.example.ts)
+    - [Select Menu](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/selectmenus/subcommand-selectmenu.example.ts) - ⚠️ Confirmed Bug | Has PR [#8174](https://github.com/discordjs/discord.js/pull/8174)
     - [Slash Command : Command](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/slashcommands/command.example.ts)
     - [Slash Command : Subcommand](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/builders/slashcommands/subcommand.example.ts)
   - Commands
@@ -60,11 +61,12 @@ npm run dev
     - [Modal Submit](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/interactions/modalsubmit.example.ts)
 - [Configs](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/utils/config.ts)
 - [Modules (_Categories_)](https://github.com/twiistrzdev/djs-bot-template/blob/main/src/client/enums/modules.ts)
-- Commands Handler
-- ContextMenus Handler
-- Interactions Handler
-- Events Handler
-- Deploy Commands and ContextMenus
+- Handlers
+  - Application Commands
+  - Context Menus
+  - Interactions
+  - Events
+- Deploy Application Commands and Context Menus
 
 ## Contributing
 
