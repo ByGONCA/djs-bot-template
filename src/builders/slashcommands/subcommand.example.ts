@@ -1,28 +1,15 @@
-import { SlashCommandBuilder } from 'discord.js';
+import { SlashCommandBuilder, SlashCommandSubcommandsOnlyBuilder } from 'discord.js';
 
-export function exampleSubcommandSlashCommand(): SlashCommandBuilder {
-	const cmd_ = new SlashCommandBuilder();
-
-	cmd_.setName(`subcommand`);
-	cmd_.setDescription(`Subcommand`);
-
-	cmd_.addSubcommand((subcommand_) => {
-		subcommand_.setName(`button`);
-		subcommand_.setDescription(`Button`);
-		return subcommand_;
-	});
-
-	cmd_.addSubcommand((subcommand_) => {
-		subcommand_.setName(`selectmenu`);
-		subcommand_.setDescription(`Select Menu`);
-		return subcommand_;
-	});
-
-	cmd_.addSubcommand((subcommand_) => {
-		subcommand_.setName(`modal`);
-		subcommand_.setDescription(`Modal`);
-		return subcommand_;
-	});
-
-	return cmd_;
+/**
+ * Example subcommand slashcommand.
+ *
+ * @returns {SlashCommandSubcommandsOnlyBuilder}
+ */
+export function exampleSubcommandSlashCommand(): SlashCommandSubcommandsOnlyBuilder {
+	return new SlashCommandBuilder()
+		.setName(`subcommand`)
+		.setDescription(`Example subcommand`)
+		.addSubcommand((subcommand_) => subcommand_.setName(`button`).setDescription(`Example subcommand Button`))
+		.addSubcommand((subcommand_) => subcommand_.setName(`selectmenu`).setDescription(`Example subcommand Select Menu`))
+		.addSubcommand((subcommand_) => subcommand_.setName(`modal`).setDescription(`Example subcommand Modal`));
 }

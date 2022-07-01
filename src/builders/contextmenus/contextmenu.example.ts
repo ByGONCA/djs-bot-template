@@ -1,12 +1,14 @@
 import { ContextMenuCommandBuilder, ApplicationCommandType, PermissionFlagsBits } from 'discord.js';
 
+/**
+ * Example context menu.
+ *
+ * @returns {ContextMenuCommandBuilder}
+ */
 export function exampleContextMenu(): ContextMenuCommandBuilder {
-	const ctxmenu_ = new ContextMenuCommandBuilder();
-
-	ctxmenu_.setName(`Context Menu`);
-	ctxmenu_.setType(ApplicationCommandType.Message);
-	ctxmenu_.setDefaultMemberPermissions(PermissionFlagsBits.Administrator);
-	ctxmenu_.setDMPermission(false);
-
-	return ctxmenu_;
+	return new ContextMenuCommandBuilder()
+		.setName(`Context Menu`)
+		.setType(ApplicationCommandType.Message)
+		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+		.setDMPermission(false);
 }

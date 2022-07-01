@@ -7,12 +7,12 @@ import logger from '../utils/logger.js';
 
 @injectable()
 export default class ExampleContextMenuContextMenu implements ContextMenuInterface {
-	public data = exampleContextMenu();
-	public global = false;
+	public readonly data = exampleContextMenu();
+	public readonly global = false;
 
 	public async execute(interaction: ContextMenuCommandInteraction<`cached`>) {
 		try {
-			return await interaction.reply({ content: `${config.app.name} Context Menu` });
+			return await interaction.reply({ content: `${config.app.name} Context Menu`, ephemeral: true });
 		} catch (e) {
 			const error = e as Error;
 			return logger.error(error, error.message);

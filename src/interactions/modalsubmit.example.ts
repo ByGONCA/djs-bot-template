@@ -3,8 +3,8 @@ import type { InteractionInterface } from '../client/interfaces/interaction.js';
 import logger from '../utils/logger.js';
 
 export default class ExampleModalSubmitInteraction implements InteractionInterface {
-	public name = `Example Modal Submit`;
-	public customId = `modalId`;
+	public readonly name = `Example Modal Submit`;
+	public readonly customId = `modalId`;
 
 	public async execute(interaction: ModalSubmitInteraction<`cached`>) {
 		try {
@@ -13,6 +13,7 @@ export default class ExampleModalSubmitInteraction implements InteractionInterfa
 
 			await interaction.reply({
 				content: `Modal Submitted ${interaction.customId}\nShort: ${short_}\nParagraph:${paragraph_}`,
+				ephemeral: true,
 			});
 		} catch (e) {
 			const error = e as Error;
