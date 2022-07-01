@@ -18,9 +18,9 @@
 	"license": "AGPL-3.0",
 	"private": true,
 	"dependencies": {
-		"@discordjs/builders": "^0.16.0-dev.1656158607-c4653f9",
-		"@discordjs/rest": "^0.6.0-dev.1656158624-c4653f9",
-		"discord.js": "^14.0.0-dev.1656158629-c4653f9",
+		"@discordjs/builders": "^0.16.0-dev.1656634271-819a1fd",
+		"@discordjs/rest": "^0.6.0-dev.1656634285-819a1fd",
+		"discord.js": "^14.0.0-dev.1656634282-819a1fd",
 		"dotenv": "^16.0.1",
 		"pino": "^8.1.0",
 		"pino-pretty": "^8.1.0",
