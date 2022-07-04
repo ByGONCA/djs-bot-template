@@ -1,4 +1,4 @@
-import { Client, Interaction, InteractionType } from 'discord.js';
+import { Client, Events, Interaction, InteractionType } from 'discord.js';
 import { inject, injectable } from 'tsyringe';
 import type { EventInterface } from '../client/interfaces/event.js';
 import type { InteractionInterface } from '../client/interfaces/interaction.js';
@@ -7,8 +7,8 @@ import logger from '../utils/logger.js';
 
 @injectable()
 export default class ModalSubmitInteractionCreateEvent implements EventInterface {
-	public name = `Modal Submit Interaction Create`;
-	public event = `interactionCreate`;
+	public readonly name = `Modal Submit Interaction Create`;
+	public readonly event = Events.InteractionCreate as string;
 
 	public constructor(
 		private readonly client: Client<true>,

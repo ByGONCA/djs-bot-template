@@ -1,5 +1,3 @@
-import type { Events } from 'discord.js';
-
 export interface EventInterface {
 	name: string;
 	event: string;

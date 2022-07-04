@@ -1,4 +1,4 @@
-import { Client, Interaction, InteractionType } from 'discord.js';
+import { Client, Events, Interaction, InteractionType } from 'discord.js';
 import { inject, injectable } from 'tsyringe';
 import type { CommandInterface } from '../client/interfaces/command.js';
 import type { EventInterface } from '../client/interfaces/event.js';
@@ -7,8 +7,8 @@ import logger from '../utils/logger.js';
 
 @injectable()
 export default class CommandInteractionCreateEvent implements EventInterface {
-	public name = `Command Interaction Create`;
-	public event = `interactionCreate`;
+	public readonly name = `Command Interaction Create`;
+	public readonly event = Events.InteractionCreate as string;
 
 	public constructor(
 		private readonly client: Client<true>,

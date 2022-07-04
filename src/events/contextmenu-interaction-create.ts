@@ -1,4 +1,4 @@
-import { Client, Interaction, InteractionType } from 'discord.js';
+import { Client, Events, Interaction, InteractionType } from 'discord.js';
 import { inject, injectable } from 'tsyringe';
 import type { ContextMenuInterface } from '../client/interfaces/contextmenu.js';
 import type { EventInterface } from '../client/interfaces/event.js';
@@ -7,8 +7,8 @@ import logger from '../utils/logger.js';
 
 @injectable()
 export default class ContextMenuInteractionCreateEvent implements EventInterface {
-	public name = `Context Menu Interaction Create`;
-	public event = `interactionCreate`;
+	public readonly name = `Context Menu Interaction Create`;
+	public readonly event = Events.InteractionCreate as string;
 
 	public constructor(
 		private readonly client: Client<true>,

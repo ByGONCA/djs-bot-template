@@ -2,15 +2,15 @@
 // * This file is safe to delete. *
 // * ============================ *
 
-import { Client, Interaction, InteractionType } from 'discord.js';
+import { Client, Events, Interaction, InteractionType } from 'discord.js';
 import { injectable } from 'tsyringe';
 import type { EventInterface } from '../client/interfaces/event.js';
 import logger from '../utils/logger.js';
 
 @injectable()
 export default class InteractionCreateEvent implements EventInterface {
-	public name = `Interaction Create`;
-	public event = `interactionCreate`;
+	public readonly name = `Interaction Create`;
+	public readonly event = Events.InteractionCreate as string;
 
 	public constructor(private readonly client: Client<true>) {}
 

@@ -1,4 +1,4 @@
-import { Client, Interaction, InteractionType } from 'discord.js';
+import { Client, Events, Interaction, InteractionType } from 'discord.js';
 import { inject, injectable } from 'tsyringe';
 import type { EventInterface } from '../client/interfaces/event.js';
 import type { InteractionInterface } from '../client/interfaces/interaction.js';
@@ -7,8 +7,8 @@ import logger from '../utils/logger.js';
 
 @injectable()
 export default class ButtonInteractionCreateEvent implements EventInterface {
-	public name = `Button Interaction Create`;
-	public event = `interactionCreate`;
+	public readonly name = `Button Interaction Create`;
+	public readonly event = Events.InteractionCreate as string;
 
 	public constructor(
 		private readonly client: Client<true>,
