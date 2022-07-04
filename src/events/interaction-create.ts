@@ -14,6 +14,9 @@ export default class InteractionCreateEvent implements EventInterface {
 
 	public constructor(private readonly client: Client<true>) {}
 
+	/**
+	 * Interaction create event executer.
+	 */
 	public execute() {
 		this.client.on(this.event, (interaction: Interaction<`cached`>) => {
 			try {

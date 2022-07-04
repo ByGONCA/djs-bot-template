@@ -10,6 +10,12 @@ export default class ExampleContextMenuContextMenu implements ContextMenuInterfa
 	public readonly data = exampleContextMenu();
 	public readonly global = false;
 
+	/**
+	 * Example context menu executer.
+	 *
+	 * @param {ContextMenuCommandInteraction} interaction
+	 * @returns
+	 */
 	public async execute(interaction: ContextMenuCommandInteraction<`cached`>) {
 		try {
 			return await interaction.reply({ content: `${config.app.name} Context Menu`, ephemeral: true });

@@ -15,6 +15,9 @@ export default class CommandInteractionCreateEvent implements EventInterface {
 		@inject(COMMANDS) private readonly commands: Map<string, CommandInterface>,
 	) {}
 
+	/**
+	 * Command interaction create event executer.
+	 */
 	public execute() {
 		this.client.on(this.event, async (interaction: Interaction<`cached`>) => {
 			try {

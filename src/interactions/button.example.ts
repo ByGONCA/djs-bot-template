@@ -6,6 +6,11 @@ export default class ExampleButtonInteraction implements InteractionInterface {
 	public readonly name = `Example Button`;
 	public readonly customId = `buttonId`;
 
+	/**
+	 * Example button interaction executer.
+	 *
+	 * @param {ButtonInteraction} interaction
+	 */
 	public async execute(interaction: ButtonInteraction<`cached`>) {
 		try {
 			await interaction.reply({ content: `Button Clicked ${interaction.customId}`, ephemeral: true });

@@ -6,6 +6,11 @@ export default class ExampleModalSubmitInteraction implements InteractionInterfa
 	public readonly name = `Example Modal Submit`;
 	public readonly customId = `modalId`;
 
+	/**
+	 * Example modal submit interaction executer.
+	 *
+	 * @param {ModalSubmitInteraction} interaction
+	 */
 	public async execute(interaction: ModalSubmitInteraction<`cached`>) {
 		try {
 			const short_ = interaction.fields.getTextInputValue(`short`);

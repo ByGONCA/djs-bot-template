@@ -6,6 +6,11 @@ export default class ExampleSelectMenuInteraction implements InteractionInterfac
 	public readonly name = `Example Select Menu`;
 	public readonly customId = `selectMenuId`;
 
+	/**
+	 * Example select menu interaction executer.
+	 *
+	 * @param {SelectMenuInteraction} interaction
+	 */
 	public async execute(interaction: SelectMenuInteraction<`cached`>) {
 		try {
 			const values_ = interaction.values;

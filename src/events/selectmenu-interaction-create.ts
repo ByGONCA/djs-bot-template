@@ -15,6 +15,9 @@ export default class SelectMenuInteractionCreateEvent implements EventInterface 
 		@inject(INTERACTIONS) private readonly interactions: Map<string, InteractionInterface>,
 	) {}
 
+	/**
+	 * Select menu interaction create event executer.
+	 */
 	public execute() {
 		this.client.on(this.event, async (interaction: Interaction<`cached`>) => {
 			try {

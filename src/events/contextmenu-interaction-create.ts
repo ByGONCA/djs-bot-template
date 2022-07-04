@@ -15,6 +15,9 @@ export default class ContextMenuInteractionCreateEvent implements EventInterface
 		@inject(CONTEXTMENUS) private readonly contextmenus: Map<string, ContextMenuInterface>,
 	) {}
 
+	/**
+	 * Context menu interaction create event executer.
+	 */
 	public execute() {
 		this.client.on(this.event, async (interaction: Interaction<`cached`>) => {
 			try {

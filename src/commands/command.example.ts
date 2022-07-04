@@ -13,6 +13,12 @@ export default class ExampleCommandCommand implements CommandInterface {
 	public readonly data = exampleCommandSlashCommand();
 	public readonly global = false;
 
+	/**
+	 * Example command executer.
+	 *
+	 * @param {ChatInputCommandInteraction} interaction
+	 * @returns
+	 */
 	public async execute(interaction: ChatInputCommandInteraction<`cached`>) {
 		try {
 			return await interaction.reply({

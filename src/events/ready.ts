@@ -10,6 +10,9 @@ export default class ReadyEvent implements EventInterface {
 
 	public constructor(private readonly client: Client<true>) {}
 
+	/**
+	 * Ready event executer.
+	 */
 	public execute() {
 		this.client.once(this.event, () => {
 			this.client.user.setPresence({

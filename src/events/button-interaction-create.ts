@@ -15,6 +15,9 @@ export default class ButtonInteractionCreateEvent implements EventInterface {
 		@inject(INTERACTIONS) private readonly interactions: Map<string, InteractionInterface>,
 	) {}
 
+	/**
+	 * Button interaction create event executer.
+	 */
 	public execute() {
 		this.client.on(this.event, async (interaction: Interaction<`cached`>) => {
 			try {
